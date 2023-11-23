@@ -1,0 +1,46 @@
+(defwidget battery-container []
+    (box
+        :orientation "h"
+        (label
+            :class "battery-icon"
+            :text { EWW_BATTERY.BAT0.status == "Charging" ? "" : ""}
+        )
+        (label
+            :class "battery-percentage"
+            :text "${EWW_BATTERY.BAT0.capacity}%"
+        )
+        
+    )
+)
+
+(defwindow battery
+    :monitor 0
+    :geometry
+    (
+        geometry 
+        :x "40"
+        :y "0"
+        :width "4%"
+        :height "3%"
+        :anchor "top right"
+    )
+    :stacking "fg"
+    :exclusive false
+    (battery-container)
+)
+
+(defwindow battery-external
+    :monitor 1
+    :geometry
+    (
+        geometry 
+        :x "40"
+        :y "0"
+        :width "4%"
+        :height "3%"
+        :anchor "top right"
+    )
+    :stacking "fg"
+    :exclusive false
+    (battery-container)
+)

@@ -1,0 +1,96 @@
+*{
+	all: unset;
+	font-family: "Iosevka Semibold";
+}
+
+// color: #5c4b44;
+
+.background-container {
+    background: rgba(223, 218, 214, 0.6) ;
+}
+
+.test-container {
+    all: unset;
+    background: #dfdad6;
+    color: #5c4b44;
+}
+
+.ahihi {
+    color: red;
+}
+
+.clock-container {
+    .time {
+        font-size: 4rem;
+        color: #5c4b44;
+    }
+    .date {
+        font-size: 2rem;
+        color: #668848;
+    }
+}
+
+.wifi-container{
+    border-radius: 1rem;
+    .wifi-icon {
+        font-size: 2rem;
+    }
+    .wifi-name {
+        font-size: 1rem;
+    }
+    .wifi-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+}
+
+.bluetooth-container{
+    border-radius: 1rem;
+    .bluetooth-icon {
+        font-size: 2rem;
+    }
+    .bluetooth-name {
+        font-size: 1rem;
+    }
+    .bluetooth-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+}
+
+.active {
+    background: #5c4b44;
+    color: #dfdad6;
+}
+.inactive {
+    background: #dfdad6;
+    color: #5c4b44;
+}
+
+.battery, .battery-external {
+    color: #5c4b44;
+    .battery-icon {
+        font-size: 1.5rem;
+    }
+    .battery-percentage {
+        font-size: 1rem;
+        margin-right: .5rem;
+    }
+}
+
+.workspace-bar {
+    background: #dfdad6;
+    border-radius: 1rem;
+    border: 2px solid #5c4b44;
+    .workspace-container {
+        padding: 1rem 2rem;
+        .workspace {
+            font-size: 2rem;
+            color: #5c4b44;
+        }
+        
+        .workspace-active {
+            color: #668848;
+        }
+    }
+}

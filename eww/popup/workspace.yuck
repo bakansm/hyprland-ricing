@@ -1,0 +1,42 @@
+(deflisten workspaces_list :initial "[]" "zsh ~/.config/eww/scripts/get-workspaces.sh")
+(deflisten current_workspace :initial "1" "zsh ~/.config/eww/scripts/get-active-workspace.sh")
+(defwidget workspaces []
+        (box 
+                :space-evenly true
+                :class "workspace-container"
+                (for workspace in workspaces_list
+                        (box
+                                :class "workspace ${workspace.id == current_workspace ? "workspace-active" : ""}"
+                                (label 
+                                        :text { workspace.id == 1 ? workspace.id == current_workspace || workspace.windows > 0 ? "➊" : "➀" : 
+                                                workspace.id == 2 ? workspace.id == current_workspace || workspace.windows > 0 ? "➋" : "➁" :
+                                                workspace.id == 3 ? workspace.id == current_workspace || workspace.windows > 0 ? "➌" : "➂" :
+                                                workspace.id == 4 ? workspace.id == current_workspace || workspace.windows > 0 ? "➍" : "➃" :
+                                                workspace.id == 5 ? workspace.id == current_workspace || workspace.windows > 0 ? "➎" : "➄" :
+                                                workspace.id == 6 ? workspace.id == current_workspace || workspace.windows > 0 ? "➏" : "➅" :
+                                                workspace.id == 7 ? workspace.id == current_workspace || workspace.windows > 0 ? "➐" : "➆" :
+                                                workspace.id == 8 ? workspace.id == current_workspace || workspace.windows > 0 ? "➑" : "➇" :
+                                                workspace.id == 9 ? workspace.id == current_workspace || workspace.windows > 0 ? "➒" : "➈" :
+                                                workspace.id == 10 ? workspace.id == current_workspace || workspace.windows > 0 ? "➓" : "➉" : 
+                                                ""}
+                                )
+                        )
+                )
+        )
+) 
+
+(defwindow workspace-bar
+        :monitor 0
+        :geometry
+        (
+                geometry 
+                :x "50%"
+                :y "90%"
+                :width "30%"
+                :height "5%"
+                :anchor "top center"
+        )
+        :stacking "fg"
+        :exclusive false
+        (workspaces)
+)

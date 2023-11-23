@@ -1,0 +1,28 @@
+(defpoll volume :interval "1s" "sh ~/.config/eww/scripts/volume.sh")
+
+(defwidget test-container []
+    (box :orientation "h"
+        :class "test-container"
+        :space-evenly false
+    (scale :min 0
+           :max 151
+           :value volume
+           :class "ahihi"
+           :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"))
+)
+
+(defwindow test
+    :monitor 0
+    :geometry
+    (
+        geometry 
+        :x "50%"
+        :y "50%"
+        :width "50%"
+        :height "20%"
+        :anchor "top center"
+    )
+    :stacking "fg"
+    :exclusive false
+    (test-container)
+)

@@ -1,0 +1,70 @@
+(defpoll BLUETOOTH_STATUS :interval "1s" "sh ~/.config/eww/scripts/bluetooth.sh --status")
+(defpoll BLUETOOTH_NAME :interval "1s" "sh ~/.config/eww/scripts/bluetooth.sh --name" )
+
+(defwidget bluetooth-container []
+    (eventbox
+        :width 240
+        :height 80
+        :class { BLUETOOTH_STATUS == " yes" ? 
+            "bluetooth-container active" : 
+            "bluetooth-container inactive"}
+        :onclick "sh ~/.config/eww/scripts/bluetooth.sh --toggle"
+        (box
+            :orientation "h"
+            :space-evenly false
+            (label
+                :width 80
+                :xalign 0.5
+                :class "bluetooth-icon"
+                :text { BLUETOOTH_STATUS == " yes" ? "" : ""}
+            )
+            (box
+                :orientation "v"
+                :valign "center"
+                (label
+                    :width 160
+                    :xalign 0
+                    :class "bluetooth-title"
+                    :text "Bluetooth"
+                )
+                (label
+                    :width 160
+                    :xalign 0
+                    :wrap false
+                    :show-truncated true
+                    :class "bluetooth-name"
+                    :visible { BLUETOOTH_NAME == "" && BLUETOOTH_STATUS == " yes" ? false : true}
+                    :text { BLUETOOTH_STATUS == " yes" ? BLUETOOTH_NAME : "Not connected"}
+                )
+            )
+        )
+    )
+) 
+
+(defwindow bluetooth
+    :monitor 0
+    :geometry
+    (
+            geometry 
+            :x "320"
+            :y "40"
+            :anchor "top right"
+    )
+    :stacking "fg"
+    :exclusive false
+    (bluetooth-container)
+)
+
+(defwindow bluetooth-external
+    :monitor 1
+    :geometry
+    (
+            geometry 
+            :x "320"
+            :y "40"
+            :anchor "top right"
+    )
+    :stacking "fg"
+    :exclusive false
+    (bluetooth-container)
+)

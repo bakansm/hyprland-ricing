@@ -1,0 +1,70 @@
+(defpoll WIFI_STATUS :interval "1s" "sh ~/.config/eww/scripts/wifi.sh --status")
+(defpoll WIFI_NAME :interval "1s" "sh ~/.config/eww/scripts/wifi.sh --name" )
+
+(defwidget wifi-container []
+    (eventbox
+        :width 240
+        :height 80
+        :class { WIFI_STATUS == "enabled" ? 
+            "wifi-container active" : 
+            "wifi-container inactive"}
+        :onclick "sh ~/.config/eww/scripts/wifi.sh --toggle"
+        (box
+            :orientation "h"
+            :space-evenly false
+            (label
+                :width 80
+                :xalign 0.5
+                :class "wifi-icon"
+                :text { WIFI_STATUS == "enabled" ? "" : ""}
+            )
+            (box
+                :orientation "v"
+                :valign "center"
+                (label
+                    :width 160
+                    :xalign 0
+                    :class "wifi-title"
+                    :text "Internet"
+                )
+                (label
+                    :width 160
+                    :xalign 0
+                    :wrap false
+                    :show-truncated true
+                    :class "wifi-name"
+                    :visible { WIFI_NAME == "" && WIFI_STATUS == "enabled" ? false : true}
+                    :text { WIFI_STATUS == "enabled" ? WIFI_NAME : "Not connected"}
+                )
+            )
+        )
+    )
+) 
+
+(defwindow wifi
+    :monitor 0
+    :geometry
+    (
+            geometry 
+            :x "40"
+            :y "40"
+            :anchor "top right"
+    )
+    :stacking "fg"
+    :exclusive false
+    (wifi-container)
+)
+
+(defwindow wifi-external
+    :monitor 1
+    :geometry
+    (
+            geometry 
+            :x "40"
+            :y "40"
+            :anchor "top right"
+    )
+    :stacking "fg"
+    :exclusive false
+    (wifi-container)
+)

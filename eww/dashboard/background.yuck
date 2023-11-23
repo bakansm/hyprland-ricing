@@ -1,0 +1,44 @@
+(defwidget background-container []
+    (eventbox 
+        :class "background-container"
+        :orientation "h"
+        :onclick "eww close-all"
+        (image
+            :path "/home/bakansm/.config/hypr/wallpaper-blur.jpg"
+            :image-width 1920
+            :image-height 1080
+        )
+    )
+)
+
+(defwindow background
+    :monitor 0
+    :geometry
+    (
+        geometry 
+        :x "0"
+        :y "0"
+        :width "100%"
+        :height "100%"
+        :anchor "top center"
+    )
+    :stacking "fg"
+    :exclusive false
+    (background-container)
+)
+
+(defwindow background-external
+    :monitor 1
+    :geometry
+    (
+        geometry 
+        :x "0"
+        :y "0"
+        :width "100%"
+        :height "100%"
+        :anchor "top center"
+    )
+    :stacking "fg"
+    :exclusive false
+    (background-container)
+)

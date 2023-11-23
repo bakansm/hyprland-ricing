@@ -1,0 +1,69 @@
+(defpoll TIME :interval "5s" `date +"%H:%M"`)
+(defpoll DATE :interval "5s" `date +"%a,%b %d,%Y"`)
+
+(defwidget time []
+        (box
+                :orientation "h"
+                :halign "center" 
+                :valign "center"
+                :class "time" 
+                (label 
+                        :text TIME
+                )        
+        )
+)
+
+(defwidget date []
+        (box
+                :orientation "h"
+                :halign "center" 
+                :valign "center"
+                :class "date" 
+                (label 
+                        :text DATE
+                )        
+        )
+)
+
+(defwidget clock-container []
+        (box 
+                :orientation "v"
+                :halign "center" 
+                :valign "center"
+                :class "clock-container"
+                (time)
+                (date)
+        )
+)
+
+(defwindow clock
+        :monitor 0
+        :geometry
+        (
+                geometry 
+                :x "0"
+                :y "0"
+                :width "80%"
+                :height "100%"
+                :anchor "top left"
+        )
+        :stacking "fg"
+        :exclusive false
+        (clock-container)
+)
+
+(defwindow clock-external
+        :monitor 1
+        :geometry
+        (
+                geometry 
+                :x "0"
+                :y "0"
+                :width "80%"
+                :height "100%"
+                :anchor "top left"
+        )
+        :stacking "fg"
+        :exclusive false
+        (clock-container)
+)

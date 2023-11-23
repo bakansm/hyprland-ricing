@@ -1,0 +1,8 @@
+(include "./popup/workspace.yuck")
+(include "./dashboard/clock.yuck")
+(include "./dashboard/battery.yuck")
+(include "./dashboard/wifi.yuck")
+(include "./dashboard/bluetooth.yuck")
+(include "./dashboard/test.yuck")
+(include "./dashboard/background.yuck")
+
